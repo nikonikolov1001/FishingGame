@@ -1,0 +1,49 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Fishing Game FSM</title>
+  <link rel="stylesheet" href="css/style.css" />
+</head>
+<body>
+  <div id="app">
+    <main class="game-shell">
+      <canvas id="gameCanvas" width="1280" height="720"></canvas>
+
+      <div id="menuOverlay" class="overlay visible">
+        <div class="panel">
+          <h1>Fishing Boss Rush</h1>
+          <p>Catch fish, store them on the boat, and feed each hungry sea boss to unlock the next one.</p>
+          <div class="info-grid">
+            <div><strong>Catch fish</strong><br>Move mouse = aim<br>Hold left click = cast power<br>Release = throw hook</div>
+            <div><strong>Feed bosses</strong><br>Reel fish to the surface to collect them<br>Press <strong>F</strong> near the boat to feed<br>Turtle → Shark → Whale → Bigger Shark</div>
+          </div>
+          <button id="playBtn" type="button" class="primary">Play</button>
+        </div>
+      </div>
+
+      <div id="pauseOverlay" class="overlay hidden">
+        <div class="panel small">
+          <h2>Paused</h2>
+          <p>Press ESC to continue fishing.</p>
+        </div>
+      </div>
+
+      <div id="gameOverOverlay" class="overlay hidden">
+        <div class="panel small">
+          <h2 id="gameOverTitle">Game Over</h2>
+          <p id="gameOverText">You ran out of line. Try again.</p>
+          <p>Total fish fed: <strong id="finalScore">0</strong></p>
+          <button id="restartBtn" type="button" class="primary">Restart</button>
+        </div>
+      </div>
+    </main>
+  </div>
+
+  <script src="js/fsm.js"></script>
+  <script src="js/player.js"></script>
+  <script src="js/enemy.js"></script>
+  <script src="js/main.js"></script>
+</body>
+</html>
