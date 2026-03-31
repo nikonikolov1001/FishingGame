@@ -1,0 +1,106 @@
+:root {
+  --bg: #06121e;
+  --panel: rgba(8, 15, 23, 0.76);
+  --text: #edf7ff;
+  --accent: #54d6ff;
+  --border: rgba(255, 255, 255, 0.14);
+}
+
+* { box-sizing: border-box; }
+html, body {
+  margin: 0;
+  min-height: 100%;
+  background: radial-gradient(circle at top, #12324f 0%, #071521 60%, #040a10 100%);
+  color: var(--text);
+  font-family: Inter, Arial, Helvetica, sans-serif;
+}
+
+body { overflow: hidden; }
+#app { display: grid; grid-template-rows: auto 1fr auto; min-height: 100vh; }
+.hud {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  gap: 12px;
+  padding: 12px 16px;
+  background: var(--panel);
+  backdrop-filter: blur(8px);
+  border-bottom: 1px solid var(--border);
+}
+.footerbar {
+  justify-content: center;
+  font-size: 13px;
+  border-top: 1px solid var(--border);
+  border-bottom: none;
+}
+.brand { font-size: 1.25rem; font-weight: 700; color: var(--accent); }
+.stats {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 14px;
+  font-size: 14px;
+}
+.controls-row button,
+.panel button {
+  border: 1px solid rgba(255,255,255,0.2);
+  background: rgba(255,255,255,0.08);
+  color: var(--text);
+  border-radius: 999px;
+  padding: 10px 16px;
+  cursor: pointer;
+}
+.controls-row button:hover,
+.panel button:hover { background: rgba(255,255,255,0.14); }
+.panel button.primary {
+  background: linear-gradient(180deg, #57d4ff 0%, #128fc0 100%);
+  border: none;
+  color: #03121e;
+  font-weight: 700;
+}
+.game-shell {
+  position: relative;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  padding: 0;
+}
+canvas {
+  width: 100vw;
+  height: calc(100vh - 110px);
+  display: block;
+  background: #0d2e49;
+}
+.overlay {
+  position: absolute;
+  inset: 0;
+  display: grid;
+  place-items: center;
+  background: rgba(1, 8, 14, 0.45);
+  backdrop-filter: blur(4px);
+}
+.overlay.hidden { display: none; }
+.overlay.visible { display: grid; }
+.panel {
+  width: min(680px, calc(100vw - 40px));
+  background: rgba(5, 11, 18, 0.88);
+  border: 1px solid var(--border);
+  border-radius: 24px;
+  padding: 28px;
+  text-align: center;
+  box-shadow: 0 20px 50px rgba(0,0,0,0.35);
+}
+.panel.small { width: min(420px, calc(100vw - 40px)); }
+.panel h1, .panel h2 { margin-top: 0; }
+.info-grid {
+  display: grid;
+  grid-template-columns: repeat(2, minmax(0, 1fr));
+  gap: 16px;
+  text-align: left;
+  margin: 20px 0;
+}
+@media (max-width: 800px) {
+  .stats { justify-content: center; }
+  .hud { flex-direction: column; }
+  .info-grid { grid-template-columns: 1fr; }
+  canvas { height: calc(100vh - 165px); }
+}

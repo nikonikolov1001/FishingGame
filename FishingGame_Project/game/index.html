@@ -1,0 +1,67 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Fishing Game FSM</title>
+  <link rel="stylesheet" href="css/style.css" />
+</head>
+<body>
+  <div id="app">
+    <header class="hud topbar">
+      <div class="brand">FishingGame FSM</div>
+      <div class="stats">
+        <span>Score: <strong id="scoreValue">0</strong></span>
+        <span>Lives: <strong id="livesValue">3</strong></span>
+        <span>Level: <strong id="levelValue">1</strong></span>
+        <span>Line: <strong id="lineValue">100</strong>%</span>
+        <span>Bait: <strong id="baitValue">Worm</strong></span>
+        <span>Zoom: <strong id="zoomValue">1.0x</strong></span>
+      </div>
+      <div class="controls-row">
+        <button id="muteBtn" type="button">🔊 Sound On</button>
+      </div>
+    </header>
+
+    <main class="game-shell">
+      <canvas id="gameCanvas" width="1280" height="720"></canvas>
+
+      <div id="menuOverlay" class="overlay visible">
+        <div class="panel">
+          <h1>FishingGame</h1>
+          <p>Cast the hook, attract realistic fish, and reel them in before the line breaks.</p>
+          <div class="info-grid">
+            <div><strong>Controls</strong><br>Click = cast / catch<br>Hold mouse = reel in<br>Mouse move = aim rod</div>
+            <div><strong>Keyboard</strong><br>1/2/3 = change bait<br>ESC = pause<br>R = restart</div>
+          </div>
+          <button id="playBtn" type="button" class="primary">Play</button>
+        </div>
+      </div>
+
+      <div id="pauseOverlay" class="overlay hidden">
+        <div class="panel small">
+          <h2>Paused</h2>
+          <p>Press ESC to continue.</p>
+        </div>
+      </div>
+
+      <div id="gameOverOverlay" class="overlay hidden">
+        <div class="panel small">
+          <h2>Game Over</h2>
+          <p>Your score: <strong id="finalScore">0</strong></p>
+          <button id="restartBtn" type="button" class="primary">Restart</button>
+        </div>
+      </div>
+    </main>
+
+    <aside class="hud footerbar">
+      <div>Events used: load, resize, keydown, keyup, click, mousemove, mousedown, mouseup, contextmenu, wheel, blur, focus, visibilitychange, custom events, requestAnimationFrame.</div>
+    </aside>
+  </div>
+
+  <script src="js/fsm.js"></script>
+  <script src="js/player.js"></script>
+  <script src="js/enemy.js"></script>
+  <script src="js/main.js"></script>
+</body>
+</html>
